@@ -106,6 +106,9 @@ joblib
 Shalini Kumari (angel-shalu)
 GitHub: https://github.com/angel-shalu
 
+
 ✅ A Streamlit web app
+
 ✅ API for prediction (FastAPI/Flask)
+
 ✅ Cleaner folder structure
