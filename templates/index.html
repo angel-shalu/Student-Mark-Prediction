@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>🎓 Student Mark Predictor</title>
+
+    <style>
+      body {
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        margin: 0;
+        background-color: #f8f9fa;
+        color: #333;
+      }
+
+      /* Navbar styling */
+      .navbar {
+        background-color: #007bff;
+        overflow: hidden;
+        display: flex;
+        justify-content: center;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      }
+
+      .navbar a {
+        color: white;
+        text-align: center;
+        padding: 14px 20px;
+        text-decoration: none;
+        font-size: 17px;
+        font-weight: bold;
+      }
+
+      .navbar a:hover {
+        background-color: #ffc107;
+        color: #000;
+        transition: 0.3s;
+      }
+
+      /* Header image */
+      .banner {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 200px;
+        z-index: 1000;
+        background-image: url("../static/images/image.jpg");
+        background-size: contain;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-color: #f8f9fa;
+        border-bottom: 4px solid #007bff;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      }
+
+      .banner img {
+        display: none;
+      }
+
+      /* Main container */
+      .container {
+        max-width: 700px;
+        margin: 220px auto 40px auto;
+        background: white;
+        padding: 40px;
+        border-radius: 12px;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        text-align: center;
+      }
+
+      h1 {
+        color: #007bff;
+        margin-bottom: 20px;
+      }
+
+      input[type="number"] {
+        width: 100%;
+        max-width: 300px;
+        padding: 12px;
+        margin-top: 10px;
+        border: 2px solid #007bff;
+        border-radius: 8px;
+        font-size: 16px;
+        transition: border-color 0.3s;
+      }
+
+      input[type="number"]:focus {
+        border-color: #ffc107;
+        outline: none;
+      }
+
+      button {
+        background-color: #007bff;
+        color: white;
+        border: none;
+        padding: 14px 30px;
+        margin-top: 20px;
+        border-radius: 8px;
+        cursor: pointer;
+        font-size: 16px;
+        font-weight: bold;
+        transition: background-color 0.3s;
+      }
+
+      button:hover {
+        background-color: #ffc107;
+        color: #000;
+      }
+
+      .prediction {
+        margin-top: 20px;
+        font-size: 20px;
+        color: #333;
+      }
+
+      footer {
+        text-align: center;
+        margin-top: 40px;
+        padding: 20px;
+        background-color: #007bff;
+        color: white;
+        font-size: 14px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <!-- Banner Section -->
+    <div class="banner"></div>
+
+    <!-- Prediction Form Section -->
+    <div class="container">
+      <h1>📘 Student Mark Predictor</h1>
+      <p>Enter your study hours to estimate your expected marks.</p>
+
+      <form action="{{ url_for('predict') }}" method="post">
+        <input
+          align="center"
+          type="number"
+          name="study_hours"
+          placeholder="Enter study hours"
+          required="required"
+        /><br />
+        <button type="submit"><strong>Predict Marks</strong></button>
+      </form>
+
+      <!-- Prediction Output -->
+      <div class="prediction-card">
+        <h2>✨ Prediction Result ✨</h2>
+        <div class="glass-box">
+          <p>{{ prediction_text }}</p>
+        </div>
+        
+      <style>
+        .prediction-card {
+          text-align: center;
+          margin-top: 30px;
+          animation: fadeIn 1.2s ease;
+        }
+
+        .glass-box {
+          background: rgba(0, 123, 255, 0.1);
+          border: 2px solid rgba(0, 123, 255, 0.3);
+          backdrop-filter: blur(10px);
+          padding: 25px;
+          border-radius: 15px;
+          color: #007bff;
+          font-size: 22px;
+          font-weight: bold;
+          width: 90%;
+          max-width: 400px;
+          margin: 0 auto;
+          box-shadow: 0 4px 20px rgba(0, 123, 255, 0.3);
+          transition: transform 0.3s;
+        }
+
+        .glass-box:hover {
+          transform: scale(1.02);
+          box-shadow: 0 6px 25px rgba(0, 123, 255, 0.5);
+        }
+
+        @keyframes fadeIn {
+          from {
+            opacity: 0;
+            transform: translateY(15px);
+          }
+
+          to {
+            opacity: 1;
+            transform: translateY(0);
+          }
+        }
+      </style>
+    </div>
+
+    <!-- Footer -->
+    <footer>Developed with ❤ using Flask & Machine Learning</footer>
+  </body>
+</html>
