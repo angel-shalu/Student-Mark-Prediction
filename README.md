@@ -4,8 +4,7 @@ A machine learning–powered web application that predicts student marks based o
 Built with Python, Scikit-Learn, and Flask, and successfully deployed on Render.
 
 # 🔗 Live Demo:
-👉 https://student-mark-prediction-2.onrender.com
-
+👉 https://student-mark-prediction-uf51.onrender.com
 
 # ✨ Key Highlights
 
