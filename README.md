@@ -1,114 +1,120 @@
-# 📘 Student Mark Predictor – Linear Regression Model
+# 🎓 Student Mark Prediction Web App
 
-This project predicts student marks based on their study hours using a simple and accurate Linear Regression machine learning model.
+A machine learning–powered web application that predicts student marks based on study hours.
+Built with Python, Scikit-Learn, and Flask, and successfully deployed on Render.
 
-# ✅ Project Overview
+# 🔗 Live Demo:
+👉 https://student-mark-prediction-2.onrender.com
 
-The script student_mark_predictor_model.py:
 
-Loads and preprocesses a dataset
+# ✨ Key Highlights
 
-Removes missing values
+🤖 Machine Learning–based prediction
 
-Splits data into training & testing sets
+📊 Linear Regression model
 
-Trains a Linear Regression model
+🌐 Flask web application
 
-Evaluates accuracy
+🎨 Clean HTML (Jinja2) interface
 
-Plots the regression line
+🚀 Production deployment using Gunicorn
 
-Saves the model as .pkl
+☁️ Hosted on Render (Cloud)
 
-Loads the saved model and performs a sample prediction
 
-This project helps beginners understand how machine learning models work end-to-end.
+# 🧠 How It Works
 
-# 📂 Files in the Project
-📁 Student-Mark-Prediction
+User enters daily study hours (1–24)
+
+Input is sent to a trained ML model
+
+Model predicts expected marks
+
+Result is displayed instantly on the same page
+
+
+# 🛠️ Tech Stack
+Layer	Technology
+Programming Language	Python
+Web Framework	Flask
+ML Algorithm	Linear Regression
+ML Library	Scikit-Learn
+Data Handling	NumPy, Pandas
+Templating	Jinja2
+Server	Gunicorn
+Deployment	Render
+
+# 📂 Project Structure
+Student-Mark-Prediction/
 │
-├── student_mark_predictor_model.py   # Main ML model training script
+├── app.py                         # Flask application
 
-├── student_mark_predictor.pkl        # Saved machine learning model
+├── student_mark_predictor.pkl     # Trained ML model
 
-├── student_info.csv                  # Dataset (study hours vs student marks)
+├── requirements.txt               # Project dependencies
 
-└── README.md                         # Project documentation
+├── templates/
+│   └── index.html                 # Frontend UI
 
-# ✅ Features
-
-Data loading & preprocessing
-
-Handling missing values
-
-Train-test split
-
-Model training using Linear Regression
-
-Accuracy evaluation
-
-Graphical visualization
-
-Model saving and loading
-
-Sample prediction for 5 hours of study
-
-# 🚀 Tech Stack
-
-Python
-
-NumPy
-
-Pandas
-
-Matplotlib
-
-Scikit-Learn
-
-Joblib
-
-# ▶️ How to Run the Model
-
-Run the Python file:
-
-python student_mark_predictor_model.py
+└── README.md
 
 
-You will see:
+# ▶️ Run Locally
+1️⃣ Clone the repository
+git clone https://github.com/angel-shalu/Student-Mark-Prediction.git
+cd Student-Mark-Prediction
 
-✅ Dataset info
-✅ Model accuracy (train & test)
-✅ A regression plot
-✅ Saved trained model
-✅ Prediction result for 5 hours of study
+2️⃣ Install dependencies
+pip install -r requirements.txt
 
-# 📈 Visualization Example
-
-The script generates:
-
-Training data scatter plot
-
-Testing data scatter plot
-
-Regression line
-
-This helps visualize how study hours influence student marks.
-
-# 📦 requirements.txt
-numpy
-pandas
-matplotlib
-scikit-learn
-joblib
-
-# ✨ Author
-
-Shalini Kumari (angel-shalu)
-GitHub: https://github.com/angel-shalu
+3️⃣ Run the application
+python app.py
 
 
-✅ A Streamlit web app
+# Open your browser and visit:
+👉 http://127.0.0.1:5000
 
-✅ API for prediction (FastAPI/Flask)
 
-✅ Cleaner folder structure
+# ☁️ Deployment Details (Render)
+
+Runtime: Python 3.13
+
+Build Command
+
+pip install -r requirements.txt
+
+
+Start Command
+
+gunicorn app:app
+
+
+The application is live and production-ready.
+
+
+# 🧪 Sample Prediction
+Study Hours	Predicted Marks
+4	~45%
+7	~70%
+10	~90%
+
+(Values depend on trained dataset)
+
+
+# 👩‍💻 Author
+Shalini Kumari
+📌 Data Science & Machine Learning Enthusiast
+🔗 GitHub: https://github.com/angel-shalu
+
+
+# 🚀 Future Improvements
+
+📈 Prediction history using database
+
+🔐 User authentication
+
+⚡ FastAPI backend
+
+📱 Streamlit UI for ML portfolio
+
+🤖 GenAI integration
