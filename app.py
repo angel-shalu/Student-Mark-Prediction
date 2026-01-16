@@ -1,8 +1,27 @@
 from flask import Flask, request, render_template
-from ml.predictor import predict_marks
+import os
+import joblib
 
 app = Flask(__name__)
 
+# ------------------ MODEL PATH ------------------
+MODEL_PATH = os.path.join(
+    os.path.dirname(__file__),   # project root
+    "student_mark_predictor.pkl"
+)
+
+# ------------------ LOAD MODEL ------------------
+def load_model():
+    return joblib.load(MODEL_PATH)
+
+model = load_model()
+
+# ------------------ PREDICTION FUNCTION ------------------
+def predict_marks(hours: float) -> float:
+    prediction = model.predict([[hours]])[0][0]
+    return float(prediction)
+
+# ------------------ ROUTES ------------------
 @app.route("/")
 def home():
     return render_template("index.html")
@@ -31,5 +50,6 @@ def predict():
             prediction_text=f"Error: {e}"
         )
 
+# ------------------ RUN APP ------------------
 if __name__ == "__main__":
-    app.run()
+    app.run(debug=True)
