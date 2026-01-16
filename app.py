@@ -26,7 +26,7 @@ def predict():
                 prediction_text='Please enter study hours between 1 and 24'
             )
 
-        prediction = float(model.predict([[hours]])[0])
+        prediction = model.predict([[hours]]).item()
 
         return render_template(
             'index.html',
@@ -38,6 +38,7 @@ def predict():
             'index.html',
             prediction_text=f'Error occurred: {e}'
         )
+
 
 if __name__ == "__main__":
     app.run(host='127.0.0.1', port=5000)
