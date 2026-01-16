@@ -15,28 +15,27 @@ def home():
 
 @app.route('/predict', methods=['POST'])
 def predict():
-    global df
-    
-    input_features = [float(x) for x in request.form.values()]
-    features_value = np.array(input_features)
-    
-    # validate input hours
-    if input_features[0] < 0 or input_features[0] > 24:
-        return render_template('index.html',
-                               prediction_text='Please enter valid hours between 1 to 24 if you live on Earth')
-        
-    # Predict
-    output = model.predict([features_value])[0].round(2)
+    try:
+        hours = float(request.form['study_hours'])
 
-    # Save data to CSV
-    df = pd.concat([df, pd.DataFrame({'Study Hours': input_features, 'Predicted Output': [output]})],
-                   ignore_index=True)
-    print(df)
-    df.to_csv('smp_data_from_app.csv')
+        if hours < 1 or hours > 24:
+            return render_template(
+                'index.html',
+                prediction_text='Please enter study hours between 1 and 24'
+            )
 
+        prediction = model.predict([[hours]])[0]
 
-    return render_template('index.html',
-                           prediction_text='You will get [{}%] marks, when you do study [{}] hours per day '.format(output, int(features_value[0])))[0]
+        return render_template(
+            'index.html',
+            prediction_text=f'You will get {prediction:.2f}% marks if you study {hours} hours per day'
+        )
+
+    except Exception as e:
+        return render_template(
+            'index.html',
+            prediction_text=f'Error occurred: {e}'
+        )
 
 if __name__ == "__main__":
     app.run(host='127.0.0.1', port=5000)
