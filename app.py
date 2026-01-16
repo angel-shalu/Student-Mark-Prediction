@@ -1,8 +1,11 @@
 from flask import Flask, request, render_template
-from ml.predictor import predict_marks
+import os
+import joblib
 
 app = Flask(__name__)
 
+
+# ------------------ ROUTES ------------------
 @app.route("/")
 def home():
     return render_template("index.html")
@@ -31,5 +34,6 @@ def predict():
             prediction_text=f"Error: {e}"
         )
 
+# ------------------ RUN APP ------------------
 if __name__ == "__main__":
-    app.run()
+    app.run(debug=True)
