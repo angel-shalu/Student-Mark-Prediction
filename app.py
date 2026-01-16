@@ -1,4 +1,5 @@
 import pandas as pd
+import numpy as np
 from flask import Flask, request, render_template
 import joblib
 import os
@@ -10,7 +11,7 @@ df = pd.DataFrame()
 
 @app.route('/')
 def home():
-    return render_template('index.html')
+    return render_template("index.html")
 
 @app.route('/predict', methods=['POST'])
 def predict():
@@ -33,8 +34,9 @@ def predict():
     print(df)
     df.to_csv('smp_data_from_app.csv')
 
+
     return render_template('index.html',
-                           prediction_text='You will get [{}%] marks, when you do study [{}] hours per day '.format(output, int(features_value[0])))
+                           prediction_text='You will get [{}%] marks, when you do study [{}] hours per day '.format(output, int(features_value[0])))[0]
 
 if __name__ == "__main__":
     app.run(host='127.0.0.1', port=5000)
