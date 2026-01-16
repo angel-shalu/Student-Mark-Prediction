@@ -1,4 +1,3 @@
-import numpy as np
 import pandas as pd
 from flask import Flask, request, render_template
 import joblib
@@ -6,6 +5,7 @@ import os
      
 app = Flask(__name__)
 model = joblib.load(os.path.join(os.path.dirname(__file__), "student_mark_predictor.pkl"))
+     
 df = pd.DataFrame()
 
 @app.route('/')
