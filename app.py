@@ -7,7 +7,9 @@ import os
 app = Flask(__name__)
 model = joblib.load(os.path.join(os.path.dirname(__file__), "student_mark_predictor.pkl"))
      
-df = pd.DataFrame()
+# df = pd.DataFrame()
+# df.to_csv('smp_data_from_app.csv')
+
 
 @app.route('/')
 def home():
