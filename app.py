@@ -26,7 +26,7 @@ def predict():
                 prediction_text='Please enter study hours between 1 and 24'
             )
 
-        prediction = model.predict([[hours]])[0]
+        prediction = float(model.predict([[hours]])[0])
 
         return render_template(
             'index.html',
