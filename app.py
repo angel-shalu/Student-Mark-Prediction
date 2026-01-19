@@ -4,6 +4,22 @@ import joblib
 
 app = Flask(__name__)
 
+# ------------------ MODEL PATH ------------------
+MODEL_PATH = os.path.join(
+    os.path.dirname(__file__),   # project root
+    "student_mark_predictor.pkl"
+)
+
+# ------------------ LOAD MODEL ------------------
+def load_model():
+    return joblib.load(MODEL_PATH)
+
+model = load_model()
+
+# ------------------ PREDICTION FUNCTION ------------------
+def predict_marks(hours: float) -> float:
+    prediction = model.predict([[hours]])[0][0]
+    return float(prediction)
 
 # ------------------ ROUTES ------------------
 @app.route("/")
